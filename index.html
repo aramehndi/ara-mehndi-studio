@@ -6,24 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+
+    /* Background */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #faf7f2;
+      background: url('bg-mehndi.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
     }
 
     header {
-      background: #3b5d50;
+      background: rgba(59, 93, 80, 0.90);
       color: white;
       padding: 30px 20px;
       text-align: center;
+      border-bottom: 2px solid rgba(255,255,255,0.3);
     }
 
     section {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      margin-top: 25px;
     }
 
     h2 {
@@ -40,32 +47,14 @@
     .card {
       background: white;
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #3b5d50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    footer {
-      background: #eee;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-
     .price {
-      font-weight: bold;
-      margin-top: 10px;
       color: #3b5d50;
+      font-weight: bold;
+      margin-top: 12px;
     }
 
     /* Gallery */
@@ -80,11 +69,20 @@
       width: 100%;
       height: 240px;
       object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
 
-    /* Floating Buttons */
+    footer {
+      background: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Floating buttons */
     .booknow-float {
       position: fixed;
       bottom: 120px;
@@ -115,15 +113,15 @@
       width: 32px;
       height: 32px;
     }
-  </style>
 
+  </style>
 </head>
 <body>
 
 <header>
   <h1>ARA Mehndi Studio</h1>
   <p>Elegant Mehndi Services for Every Indian Occasion</p>
-  <a class="btn" href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank">Book Now</a>
+  <a class="btn" href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank" style="color:white">Book Now</a>
 </header>
 
 <section>
@@ -149,35 +147,32 @@
   <div class="packages">
     <div class="card">
       <h3>Bridal Package</h3>
-      <p>Full bridal mehndi for hands and legs (front + back) with detailed designs.</p>
-      <p class="price">Starting from ₹2,599</p>
+      <p>Full bridal mehndi for hands and legs (front + back).</p>
+      <p class="price">Starting from ₹3,500</p>
     </div>
     <div class="card">
       <h3>Festival Package</h3>
-      <p>Simple & elegant mehndi for Karwa Chauth, Teej, Diwali, Eid and other festivals.</p>
-      <p class="price">Starting from ₹199 per hand</p>
+      <p>Festival mehndi for Karwa Chauth, Teej, Diwali, Eid etc.</p>
+      <p class="price">₹250 per hand onwards</p>
     </div>
     <div class="card">
       <h3>Guest / Family Package</h3>
-      <p>Mehndi for family members and guests for home functions & parties.</p>
-      <p class="price">Starting from ₹1,499 per function</p>
+      <p>For family members during weddings and home functions.</p>
+      <p class="price">From ₹1,500 per function</p>
     </div>
   </div>
-  <p style="margin-top:15px; font-size:14px;">
-    *Final price depends on design, length and number of guests. Please WhatsApp for exact quotation.
-  </p>
 </section>
 
 <section>
   <h2>Gallery</h2>
-  <p>Our original mehndi designs for weddings, festivals and family occasions.</p>
+  <p>Our original mehndi designs for Weddings, Festivals & Family occasions.</p>
 
   <div class="gallery">
-    <img src="mehndi1.png" alt="Bridal Mehndi Design">
-    <img src="mehndi2.png" alt="Feet Mehndi Design">
-    <img src="mehndi3.png" alt="Festival Mehndi Design">
-    <img src="mehndi4.png" alt="Diwali Mehndi">
-    <img src="mehndi5.png" alt="Family Mehndi Design">
+    <img src="mehndi1.png">
+    <img src="mehndi2.png">
+    <img src="mehndi3.png">
+    <img src="mehndi4.png">
+    <img src="mehndi5.png">
   </div>
 </section>
 
@@ -186,7 +181,7 @@
   <p>
     Professional mehndi services with hygienic practice and elegant designs.
     Artist identity is kept private as per client comfort.
-    Home service is available for weddings, festivals and family functions.
+    Home service available for weddings, festivals and family functions.
   </p>
 </section>
 
@@ -194,18 +189,9 @@
   © 2026 ARA Mehndi Studio | All Rights Reserved
 </footer>
 
-<!-- Floating Book Now Button -->
-<a href="https://forms.gle/sDAeRhgyvuAPohV58"
-   target="_blank"
-   class="booknow-float">
-   Book Now
-</a>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio%2C%20I%20want%20to%20book%20a%20mehndi%20service"
-   target="_blank"
-   class="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<a href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank" class="booknow-float">Book Now</a>
+<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio,%20I%20want%20to%20book%20a%20mehndi%20service" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
 </body>
