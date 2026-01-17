@@ -57,6 +57,16 @@
       margin-top: 12px;
     }
 
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #3b5d50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
     /* Gallery */
     .gallery {
       display: grid;
@@ -82,10 +92,10 @@
       border-top: 1px solid rgba(0,0,0,0.1);
     }
 
-    /* Floating Buttons */
+    /* Floating Buttons – vertical with gap */
     .booknow-float {
       position: fixed;
-      bottom: 150px;
+      bottom: 170px;
       right: 20px;
       background: #3b5d50;
       color: white;
@@ -100,7 +110,7 @@
 
     .insta-float {
       position: fixed;
-      bottom: 95px;
+      bottom: 110px;
       right: 20px;
       background: #E1306C;
       padding: 10px;
@@ -116,7 +126,7 @@
 
     .whatsapp-float {
       position: fixed;
-      bottom: 40px;
+      bottom: 50px;
       right: 20px;
       background: #25D366;
       padding: 12px;
@@ -137,7 +147,7 @@
 <header>
   <h1>ARA Mehndi Studio</h1>
   <p>Elegant Mehndi Services for Every Indian Occasion</p>
-  <a class="btn" href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank" style="color:white">Book Now</a>
+  <a class="btn" href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank">Book Now</a>
 </header>
 
 <section>
@@ -184,11 +194,11 @@
   <p>Our original mehndi designs for Weddings, Festivals & Family occasions.</p>
 
   <div class="gallery">
-    <img src="mehndi1.png">
-    <img src="mehndi2.png">
-    <img src="mehndi3.png">
-    <img src="mehndi4.png">
-    <img src="mehndi5.png">
+    <img src="mehndi1.png" alt="Bridal Mehndi Design">
+    <img src="mehndi2.png" alt="Feet Mehndi Design">
+    <img src="mehndi3.png" alt="Festival Mehndi Design">
+    <img src="mehndi4.png" alt="Diwali Mehndi">
+    <img src="mehndi5.png" alt="Family Mehndi Design">
   </div>
 </section>
 
@@ -206,14 +216,22 @@
 </footer>
 
 <!-- Floating Buttons -->
-<a href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank" class="booknow-float">Book Now</a>
+<a href="https://forms.gle/sDAeRhgyvuAPohV58"
+   target="_blank"
+   class="booknow-float">
+   Book Now
+</a>
 
-<a href="https://www.instagram.com/ara_mehndi_studio.01" target="_blank" class="insta-float">
+<a href="https://www.instagram.com/ara_mehndi_studio.01"
+   target="_blank"
+   class="insta-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
 </a>
 
-<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio,%20I%20want%20to%20book%20a%20mehndi%20service" target="_blank" class="whatsapp-float">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio%2C%20I%20want%20to%20book%20a%20mehndi%20service"
+   target="_blank"
+   class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 </body>
