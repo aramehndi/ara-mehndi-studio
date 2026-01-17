@@ -25,6 +25,7 @@
     }
     h2 {
       color: #3b5d50;
+      margin-bottom: 20px;
     }
     .packages {
       display: grid;
@@ -54,7 +55,28 @@
       margin-top: 40px;
     }
 
-    /* FLOATING BUTTONS FIX */
+    .price {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #3b5d50;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* FLOATING BUTTONS */
     .booknow-float {
       position: fixed;
       bottom: 120px;
@@ -80,7 +102,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       z-index: 9999;
     }
-
     .whatsapp-float img {
       width: 32px;
       height: 32px;
@@ -116,10 +137,47 @@
 </section>
 
 <section>
+  <h2>Packages & Prices</h2>
+  <div class="packages">
+    <div class="card">
+      <h3>Bridal Package</h3>
+      <p>Full bridal mehndi for hands (front & back) and legs with detailed designs.</p>
+      <p class="price">Starting from ₹3,500</p>
+    </div>
+    <div class="card">
+      <h3>Festival Package</h3>
+      <p>Simple and elegant mehndi for Karwa Chauth, Teej, Diwali, Eid and other festivals.</p>
+      <p class="price">Starting from ₹250 per hand</p>
+    </div>
+    <div class="card">
+      <h3>Family / Guest Package</h3>
+      <p>Mehndi for family members and guests for home functions and parties.</p>
+      <p class="price">Starting from ₹1,500 per function</p>
+    </div>
+  </div>
+  <p style="margin-top:15px; font-size:14px;">
+    *Final price depends on design, length and number of guests. Please WhatsApp for exact quotation.
+  </p>
+</section>
+
+<section>
+  <h2>Gallery</h2>
+  <p>Some sample mehndi designs for weddings, festivals and family occasions.</p>
+  <div class="gallery">
+    <img src="https://i.imgur.com/1lZZLvJ.jpg" alt="Mehndi Design 1">
+    <img src="https://i.imgur.com/qqEotpx.jpg" alt="Mehndi Design 2">
+    <img src="https://i.imgur.com/PtVJs5N.jpg" alt="Mehndi Design 3">
+    <img src="https://i.imgur.com/ECeRtYz.jpg" alt="Mehndi Design 4">
+  </div>
+  <!-- NOTE: Baad me in image URLs ko apne original photos se replace kar sakte ho -->
+</section>
+
+<section>
   <h2>Why Choose Us</h2>
   <p>
     Professional mehndi services with hygienic practice and elegant designs.
-    Artist identity is kept private as per client comfort.
+    Artist identity is kept private as per client comfort. Home service is available for weddings,
+    festivals and family functions.
   </p>
 </section>
 
