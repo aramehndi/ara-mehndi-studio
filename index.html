@@ -4,25 +4,8 @@
   <meta charset="UTF-8">
   <title>ARA Mehndi Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio,%20I%20want%20to%20book%20mehndi%20service"
-   target="_blank"
-   style="
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background: #25D366;
-   color: white;
-   padding: 14px 18px;
-   border-radius: 50px;
-   text-decoration: none;
-   font-weight: bold;
-   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-   ">
-   WhatsApp
-</a>
 
+  <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -69,9 +52,27 @@
       padding: 15px;
       font-size: 14px;
     }
-  </style>
-</head>
 
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 9999;
+    }
+    .whatsapp-float:hover {
+      background: #1ebd5a;
+    }
+  </style>
+
+</head>
 <body>
 
 <header>
@@ -109,6 +110,13 @@
 <footer>
   © 2026 ARA Mehndi Studio | All Rights Reserved
 </footer>
+
+<!-- WhatsApp Button (HTML) - Correct Position -->
+<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio%2C%20I%20want%20to%20book%20a%20mehndi%20service"
+   target="_blank"
+   class="whatsapp-float">
+   WhatsApp
+</a>
 
 </body>
 </html>
