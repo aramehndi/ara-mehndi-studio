@@ -51,12 +51,13 @@
       text-align: center;
       padding: 15px;
       font-size: 14px;
+      margin-top: 40px;
     }
 
-    /* FLOATING BUTTONS */
+    /* FLOATING BUTTONS FIX */
     .booknow-float {
       position: fixed;
-      bottom: 140px;
+      bottom: 120px;
       right: 20px;
       background: #3b5d50;
       color: white;
@@ -71,18 +72,19 @@
 
     .whatsapp-float {
       position: fixed;
-      bottom: 60px;
+      bottom: 50px;
       right: 20px;
       background: #25D366;
-      padding: 14px;
+      padding: 12px;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       z-index: 9999;
     }
 
     .whatsapp-float img {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
+      display: block;
     }
   </style>
 
@@ -122,4 +124,22 @@
 </section>
 
 <footer>
-  © 2026 ARA Mehndi Studio | All
+  © 2026 ARA Mehndi Studio | All Rights Reserved
+</footer>
+
+<!-- FLOATING BOOK NOW -->
+<a href="https://forms.gle/sDAeRhgyvuAPohV58"
+   target="_blank"
+   class="booknow-float">
+   Book Now
+</a>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/916200165825?text=Hello%20ARA%20Mehndi%20Studio%2C%20I%20want%20to%20book%20a%20mehndi%20service"
+   target="_blank"
+   class="whatsapp-float">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+</body>
+</html>
