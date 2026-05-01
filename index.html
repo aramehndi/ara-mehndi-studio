@@ -3,27 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ARA Mehndi Studio</title>
 
+<!-- Google Verification -->
+<meta name="google-site-verification" content="H4cj3xKG7XTY1owIFaOR3MZBUtjJAw4uKJRBhttdAhQ" />
+
 <style>
+
 body {
   margin: 0;
   font-family: Arial;
-  background: #0f2027;
   color: white;
+  background: url('bg-mehndi.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
+/* Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Navbar */
 .navbar {
   text-align: center;
   padding: 15px;
   background: black;
 }
 
+.navbar a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+/* Header */
 header {
   text-align: center;
   padding: 80px 20px;
 }
 
+/* Button */
+.btn {
+  background: green;
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Themes */
 .container {
   display: flex;
   justify-content: center;
@@ -43,6 +79,7 @@ header {
   cursor: pointer;
 }
 
+/* Gallery */
 .gallery {
   display: none;
   text-align: center;
@@ -52,17 +89,59 @@ header {
   width: 250px;
   margin: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
+
+/* Floating Buttons */
+.whatsapp, .instagram {
+  position: fixed;
+  bottom: 20px;
+  padding: 12px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
+.whatsapp {
+  right: 20px;
+  background: green;
+}
+
+.instagram {
+  right: 80px;
+  background: purple;
+}
+
+/* Chatbot */
+#chatbot {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: white;
+  color: black;
+  padding: 10px;
+  width: 250px;
+  display: none;
+  border-radius: 10px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="navbar">Home | Gallery</div>
+<!-- NAVBAR -->
+<div class="navbar">
+  <a href="#">Home</a>
+  <a href="#gallerySection">Gallery</a>
+</div>
 
+<!-- HEADER -->
 <header>
   <h1>ARA Mehndi Studio</h1>
   <p>Arabic | Bridal | Mandala Designs</p>
+  <br>
+  <a href="https://forms.gle/YOUR_FORM_LINK" class="btn">Book Now</a>
 </header>
 
 <!-- THEMES -->
@@ -77,10 +156,9 @@ header {
 </section>
 
 <!-- GALLERY -->
-<section id="gallerySection" style="display:none; text-align:center;">
-  <h2 id="title"></h2>
+<section id="gallerySection" style="display:none;">
+  <h2 id="title" style="text-align:center;"></h2>
 
-  <!-- Arabic -->
   <div id="arabic" class="gallery">
     <img src="arabic1.png">
     <img src="arabic2.png">
@@ -89,7 +167,6 @@ header {
     <img src="arabic5.png">
   </div>
 
-  <!-- Bridal -->
   <div id="bridal" class="gallery">
     <img src="bridal1.png">
     <img src="bridal2.png">
@@ -98,7 +175,6 @@ header {
     <img src="bridal5.png">
   </div>
 
-  <!-- Mandala -->
   <div id="mandala" class="gallery">
     <img src="mandala1.png">
     <img src="mandala2.png">
@@ -109,26 +185,43 @@ header {
 
 </section>
 
+<!-- MAP -->
+<section style="text-align:center; padding:40px;">
+  <h2>Our Location</h2>
+  <iframe src="https://maps.google.com/maps?q=Ara%20Bihar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  width="90%" height="300"></iframe>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/916200165825" class="whatsapp">💬</a>
+
+<!-- INSTAGRAM -->
+<a href="https://instagram.com/ara_mehndi_studio.01" class="instagram">📸</a>
+
+<!-- CHATBOT BUTTON -->
+<button onclick="toggleChat()" style="position:fixed; bottom:140px; right:20px;">Chat</button>
+
+<!-- CHATBOT -->
+<div id="chatbot">
+  <p><b>Hi 👋</b><br>How can I help?</p>
+</div>
+
 <script>
 
 function showGallery(type) {
-
-  // Show section
   document.getElementById("gallerySection").style.display = "block";
-
-  // Hide all galleries
   document.querySelectorAll(".gallery").forEach(g => g.style.display = "none");
-
-  // Show selected
   document.getElementById(type).style.display = "block";
-
-  // Title set
   document.getElementById("title").innerText = type.toUpperCase() + " Designs";
 
-  // Scroll
   document.getElementById("gallerySection").scrollIntoView({
     behavior: "smooth"
   });
+}
+
+function toggleChat() {
+  let chat = document.getElementById("chatbot");
+  chat.style.display = chat.style.display === "none" ? "block" : "none";
 }
 
 </script>
