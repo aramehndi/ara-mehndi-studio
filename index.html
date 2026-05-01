@@ -6,44 +6,61 @@
 
 <title>ARA Mehndi Studio</title>
 
-<!-- Google Verification -->
 <meta name="google-site-verification" content="H4cj3xKG7XTY1owIFaOR3MZBUtjJAw4uKJRBhttdAhQ" />
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('mehndi-bg.jpg');
+  font-family: 'Segoe UI', sans-serif;
+  background: url('mehndi-bg.jpg') no-repeat center center fixed;
   background-size: cover;
-  background-attachment: fixed;
   color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: black;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
 }
 
 /* HEADER */
 header {
   text-align: center;
-  padding: 80px 20px;
-}
-
-h1 {
-  font-size: 40px;
+  padding: 120px 20px;
 }
 
 .btn {
-  background: #25D366;
+  background: linear-gradient(45deg,#25D366,#128C7E);
+  padding: 12px 30px;
+  border-radius: 30px;
   color: white;
-  padding: 12px 25px;
-  border-radius: 25px;
   text-decoration: none;
-  margin-top: 10px;
   display: inline-block;
 }
 
-/* SECTION */
+/* SECTIONS */
 section {
   padding: 50px 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* CARDS */
@@ -55,8 +72,7 @@ section {
 }
 
 .card {
-  background: white;
-  color: black;
+  background: rgba(0,0,0,0.7);
   padding: 20px;
   width: 250px;
   border-radius: 10px;
@@ -81,61 +97,95 @@ section {
 }
 
 /* FLOAT BUTTONS */
-.whatsapp {
+.whatsapp, .instagram {
   position: fixed;
-  bottom: 20px;
+  right: 20px;
+  padding: 15px;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.whatsapp { bottom: 20px; background: #25D366; }
+.instagram { bottom: 90px; background: #E1306C; }
+
+/* CHATBOT */
+#chatbot-icon {
+  position: fixed;
+  bottom: 160px;
   right: 20px;
   background: #25D366;
   padding: 15px;
   border-radius: 50%;
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
+  cursor: pointer;
 }
 
-.instagram {
+#chatbox {
   position: fixed;
-  bottom: 80px;
+  bottom: 230px;
   right: 20px;
-  background: #E1306C;
-  padding: 15px;
-  border-radius: 50%;
-  font-size: 20px;
+  width: 260px;
+  background: white;
+  color: black;
+  display: none;
+  border-radius: 10px;
+}
+
+#chat-header {
+  background: #25D366;
   color: white;
-  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+}
+
+#chat-body {
+  height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+#userInput {
+  width: 100%;
+  padding: 10px;
+  border: none;
 }
 </style>
-
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+  <a href="#">Home</a>
+  <a href="#">Services</a>
+  <a href="#">Gallery</a>
+</div>
+
 <!-- HEADER -->
 <header>
   <h1>ARA Mehndi Studio</h1>
-  <p>Bridal | Festival | Family Mehndi</p>
-  <a href="https://wa.me/916200165825" class="btn">Book Now</a>
+  <p>Premium Bridal | Festival | Family Mehndi</p>
+  <a href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank" class="btn">Book Now</a>
 </header>
 
-<!-- CATEGORIES -->
+<!-- SERVICES -->
 <section>
-  <h2>Our Services</h2>
+  <h2>Services</h2>
   <div class="container">
     <div class="card">Bridal Mehndi</div>
     <div class="card">Festival Mehndi</div>
     <div class="card">Guest Mehndi</div>
-    <div class="card">Minimal Mehndi</div>
   </div>
 </section>
 
 <!-- THEMES -->
 <section>
-  <h2>Popular Themes</h2>
+  <h2>Themes</h2>
   <div class="container">
     <div class="theme">Arabic</div>
     <div class="theme">Bridal</div>
     <div class="theme">Mandala</div>
-    <div class="theme">Karwa</div>
   </div>
 </section>
 
@@ -161,9 +211,69 @@ section {
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section>
+  <h2>Customer Reviews</h2>
+  <div class="container">
+    <div class="card">⭐⭐⭐⭐⭐ Best Mehndi! - Neha</div>
+    <div class="card">⭐⭐⭐⭐⭐ Beautiful designs - Pooja</div>
+    <div class="card">⭐⭐⭐⭐⭐ Fast & clean work - Simran</div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section>
+  <h2>Location</h2>
+  <iframe src="https://maps.google.com/maps?q=Ara%20Bihar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  width="90%" height="300"></iframe>
+</section>
+
+<!-- CHATBOT -->
+<div id="chatbot-icon" onclick="toggleChat()">💬</div>
+
+<div id="chatbox">
+  <div id="chat-header">Ask Anything</div>
+  <div id="chat-body"></div>
+  <input type="text" id="userInput" placeholder="Type..." onkeypress="handleKey(event)">
+</div>
+
 <!-- FLOAT BUTTONS -->
-<a href="https://wa.me/916200165825" class="whatsapp">🟢</a>
 <a href="https://instagram.com/ara_mehndi_studio.01" class="instagram">📸</a>
+<a href="https://wa.me/916200165825" class="whatsapp">🟢</a>
+
+<script>
+function toggleChat(){
+  let box = document.getElementById("chatbox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+function handleKey(e){
+  if(e.key === "Enter"){
+    let input = document.getElementById("userInput").value.toLowerCase();
+    let response = "";
+
+    if(input.includes("price")) response = "Bridal ₹3500+, Festival ₹250/hand";
+    else if(input.includes("book")) response = "Click Book Now button to book 😊";
+    else if(input.includes("location")) response = "We are based in Ara, Bihar";
+    else response = "Please contact on WhatsApp 😊";
+
+    document.getElementById("chat-body").innerHTML += "<p><b>You:</b> "+input+"</p>";
+    document.getElementById("chat-body").innerHTML += "<p><b>Bot:</b> "+response+"</p>";
+
+    document.getElementById("userInput").value="";
+  }
+}
+
+// SCROLL ANIMATION
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
