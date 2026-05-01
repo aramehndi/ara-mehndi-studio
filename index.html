@@ -9,12 +9,31 @@
 <meta name="google-site-verification" content="H4cj3xKG7XTY1owIFaOR3MZBUtjJAw4uKJRBhttdAhQ" />
 
 <style>
+
+/* ANIMATED BACKGROUND */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url('mehndi-bg.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a1a1a);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
   color: white;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* CANVAS */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 /* NAVBAR */
@@ -49,7 +68,7 @@ header {
   display: inline-block;
 }
 
-/* SECTION ANIMATION */
+/* SECTIONS ANIMATION */
 section {
   padding: 50px 20px;
   text-align: center;
@@ -165,10 +184,13 @@ section.show {
   padding: 10px;
   border: none;
 }
+
 </style>
 </head>
 
 <body>
+
+<canvas id="bgCanvas"></canvas>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -257,21 +279,56 @@ section.show {
 <a href="https://wa.me/916200165825" class="whatsapp">🟢</a>
 
 <script>
-// CHATBOT
+
+/* PARTICLES */
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 60; i++) {
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*2,
+    dx: Math.random()-0.5,
+    dy: Math.random()-0.5
+  });
+}
+
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="white";
+    ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* CHATBOT */
 function toggleChat(){
   let box = document.getElementById("chatbox");
-  box.style.display = box.style.display === "none" ? "block" : "none";
+  box.style.display = box.style.display==="none"?"block":"none";
 }
 
 function handleKey(e){
-  if(e.key === "Enter"){
-    let input = document.getElementById("userInput").value.toLowerCase();
-    let response = "";
+  if(e.key==="Enter"){
+    let input=document.getElementById("userInput").value.toLowerCase();
+    let response="";
 
-    if(input.includes("price")) response = "Bridal ₹3500+, Festival ₹250/hand";
-    else if(input.includes("book")) response = "Click Book Now button to book 😊";
-    else if(input.includes("location")) response = "We are based in Ara, Bihar";
-    else response = "Please contact on WhatsApp 😊";
+    if(input.includes("price")) response="Bridal ₹3500+, Festival ₹250/hand";
+    else if(input.includes("book")) response="Click Book Now button 😊";
+    else if(input.includes("location")) response="Ara, Bihar";
+    else response="Contact on WhatsApp 😊";
 
     document.getElementById("chat-body").innerHTML += "<p><b>You:</b> "+input+"</p>";
     document.getElementById("chat-body").innerHTML += "<p><b>Bot:</b> "+response+"</p>";
@@ -280,20 +337,19 @@ function handleKey(e){
   }
 }
 
-// ANIMATION FIXED
-const sections = document.querySelectorAll("section");
+/* SCROLL ANIMATION */
+const sections=document.querySelectorAll("section");
 
-function showSections() {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
+function showSections(){
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight-100){
       sec.classList.add("show");
     }
   });
 }
 
-window.addEventListener("load", showSections);
-window.addEventListener("scroll", showSections);
+window.addEventListener("load",showSections);
+window.addEventListener("scroll",showSections);
 
 </script>
 
