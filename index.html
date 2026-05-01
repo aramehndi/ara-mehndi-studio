@@ -49,13 +49,13 @@ header {
   display: inline-block;
 }
 
-/* SECTIONS */
+/* SECTION ANIMATION */
 section {
   padding: 50px 20px;
   text-align: center;
   opacity: 0;
-  transform: translateY(30px);
-  transition: 0.6s;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
 }
 
 section.show {
@@ -76,6 +76,11 @@ section.show {
   padding: 20px;
   width: 250px;
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
 }
 
 /* THEMES */
@@ -88,12 +93,22 @@ section.show {
   align-items: center;
   justify-content: center;
   color: black;
+  transition: 0.3s;
+}
+
+.theme:hover {
+  transform: scale(1.1);
 }
 
 /* GALLERY */
 .gallery img {
   width: 250px;
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 /* FLOAT BUTTONS */
@@ -242,6 +257,7 @@ section.show {
 <a href="https://wa.me/916200165825" class="whatsapp">🟢</a>
 
 <script>
+// CHATBOT
 function toggleChat(){
   let box = document.getElementById("chatbox");
   box.style.display = box.style.display === "none" ? "block" : "none";
@@ -264,15 +280,21 @@ function handleKey(e){
   }
 }
 
-// SCROLL ANIMATION
+// ANIMATION FIXED
 const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", () => {
+
+function showSections() {
   sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
       sec.classList.add("show");
     }
   });
-});
+}
+
+window.addEventListener("load", showSections);
+window.addEventListener("scroll", showSections);
+
 </script>
 
 </body>
