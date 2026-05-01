@@ -6,45 +6,20 @@
 
 <title>ARA Mehndi Studio</title>
 
-<meta name="google-site-verification" content="H4cj3xKG7XTY1owIFaOR3MZBUtjJAw4uKJRBhttdAhQ" />
-
 <style>
 
-/* ANIMATED BACKGROUND */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a1a1a);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
+  font-family: Arial;
+  background: #0f2027;
   color: white;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* CANVAS */
-#bgCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
 }
 
 /* NAVBAR */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: black;
-  padding: 10px;
   text-align: center;
-  z-index: 1000;
+  padding: 15px;
+  background: black;
 }
 
 .navbar a {
@@ -56,62 +31,27 @@ body {
 /* HEADER */
 header {
   text-align: center;
-  padding: 120px 20px;
-}
-
-.btn {
-  background: linear-gradient(45deg,#25D366,#128C7E);
-  padding: 12px 30px;
-  border-radius: 30px;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-}
-
-/* SECTIONS ANIMATION */
-section {
-  padding: 50px 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease;
-}
-
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* CARDS */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  background: rgba(0,0,0,0.7);
-  padding: 20px;
-  width: 250px;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
+  padding: 80px 20px;
 }
 
 /* THEMES */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .theme {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   background: gold;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -123,6 +63,7 @@ section.show {
 .gallery img {
   width: 250px;
   border-radius: 10px;
+  margin: 10px;
   transition: 0.3s;
 }
 
@@ -130,226 +71,92 @@ section.show {
   transform: scale(1.05);
 }
 
-/* FLOAT BUTTONS */
-.whatsapp, .instagram {
-  position: fixed;
-  right: 20px;
-  padding: 15px;
-  border-radius: 50%;
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
-}
-
-.whatsapp { bottom: 20px; background: #25D366; }
-.instagram { bottom: 90px; background: #E1306C; }
-
-/* CHATBOT */
-#chatbot-icon {
-  position: fixed;
-  bottom: 160px;
-  right: 20px;
-  background: #25D366;
-  padding: 15px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-#chatbox {
-  position: fixed;
-  bottom: 230px;
-  right: 20px;
-  width: 260px;
-  background: white;
-  color: black;
-  display: none;
-  border-radius: 10px;
-}
-
-#chat-header {
-  background: #25D366;
-  color: white;
-  padding: 10px;
-  text-align: center;
-}
-
-#chat-body {
-  height: 200px;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-#userInput {
-  width: 100%;
-  padding: 10px;
-  border: none;
-}
-
 </style>
 </head>
 
 <body>
 
-<canvas id="bgCanvas"></canvas>
-
 <!-- NAVBAR -->
 <div class="navbar">
   <a href="#">Home</a>
-  <a href="#">Services</a>
   <a href="#">Gallery</a>
 </div>
 
 <!-- HEADER -->
 <header>
   <h1>ARA Mehndi Studio</h1>
-  <p>Premium Bridal | Festival | Family Mehndi</p>
-  <a href="https://forms.gle/sDAeRhgyvuAPohV58" target="_blank" class="btn">Book Now</a>
+  <p>Arabic | Bridal | Mandala Mehndi Designs</p>
 </header>
-
-<!-- SERVICES -->
-<section>
-  <h2>Services</h2>
-  <div class="container">
-    <div class="card">Bridal Mehndi</div>
-    <div class="card">Festival Mehndi</div>
-    <div class="card">Guest Mehndi</div>
-  </div>
-</section>
 
 <!-- THEMES -->
 <section>
   <h2>Themes</h2>
   <div class="container">
-    <div class="theme">Arabic</div>
-    <div class="theme">Bridal</div>
-    <div class="theme">Mandala</div>
+
+    <div class="theme" onclick="showGallery('arabic')">Arabic</div>
+    <div class="theme" onclick="showGallery('bridal')">Bridal</div>
+    <div class="theme" onclick="showGallery('mandala')">Mandala</div>
+
   </div>
 </section>
 
 <!-- GALLERY -->
-<section>
-  <h2>Gallery</h2>
-  <div class="container gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-    <img src="photo4.jpg">
-    <img src="photo5.jpg">
+<section id="gallerySection" style="display:none;">
+  <h2 id="galleryTitle"></h2>
+
+  <!-- ARABIC -->
+  <div class="gallery" id="arabic" style="display:none;">
+    <img src="arabic1.png">
+    <img src="arabic2.png">
+    <img src="arabic3.png">
+    <img src="arabic4.png">
+    <img src="arabic5.png">
   </div>
-</section>
 
-<!-- PRICING -->
-<section>
-  <h2>Pricing</h2>
-  <div class="container">
-    <div class="card">Bridal: ₹3500+</div>
-    <div class="card">Festival: ₹250/hand</div>
-    <div class="card">Guest: ₹1500+</div>
+  <!-- BRIDAL -->
+  <div class="gallery" id="bridal" style="display:none;">
+    <img src="bridal1.png">
+    <img src="bridal2.png">
+    <img src="bridal3.png">
+    <img src="bridal4.png">
+    <img src="bridal5.png">
   </div>
-</section>
 
-<!-- REVIEWS -->
-<section>
-  <h2>Customer Reviews</h2>
-  <div class="container">
-    <div class="card">⭐⭐⭐⭐⭐ Best Mehndi! - Neha</div>
-    <div class="card">⭐⭐⭐⭐⭐ Beautiful designs - Pooja</div>
-    <div class="card">⭐⭐⭐⭐⭐ Fast & clean work - Simran</div>
+  <!-- MANDALA -->
+  <div class="gallery" id="mandala" style="display:none;">
+    <img src="mandala1.png">
+    <img src="mandala2.png">
+    <img src="mandala3.png">
+    <img src="mandala4.png">
+    <img src="mandala5.png">
   </div>
+
 </section>
-
-<!-- MAP -->
-<section>
-  <h2>Location</h2>
-  <iframe src="https://maps.google.com/maps?q=Ara%20Bihar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-  width="90%" height="300"></iframe>
-</section>
-
-<!-- CHATBOT -->
-<div id="chatbot-icon" onclick="toggleChat()">💬</div>
-
-<div id="chatbox">
-  <div id="chat-header">Ask Anything</div>
-  <div id="chat-body"></div>
-  <input type="text" id="userInput" placeholder="Type..." onkeypress="handleKey(event)">
-</div>
-
-<!-- FLOAT BUTTONS -->
-<a href="https://instagram.com/ara_mehndi_studio.01" class="instagram">📸</a>
-<a href="https://wa.me/916200165825" class="whatsapp">🟢</a>
 
 <script>
 
-/* PARTICLES */
-const canvas = document.getElementById("bgCanvas");
-const ctx = canvas.getContext("2d");
+function showGallery(type) {
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+  // Show section
+  document.getElementById("gallerySection").style.display = "block";
 
-let particles = [];
+  // Hide all galleries
+  document.querySelectorAll(".gallery").forEach(g => {
+    g.style.display = "none";
+  });
 
-for (let i = 0; i < 60; i++) {
-  particles.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*2,
-    dx: Math.random()-0.5,
-    dy: Math.random()-0.5
+  // Show selected
+  document.getElementById(type).style.display = "block";
+
+  // Title change
+  document.getElementById("galleryTitle").innerText =
+    type.charAt(0).toUpperCase() + type.slice(1) + " Designs";
+
+  // Smooth scroll
+  document.getElementById("gallerySection").scrollIntoView({
+    behavior: "smooth"
   });
 }
-
-function animateParticles(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{
-    p.x+=p.dx;
-    p.y+=p.dy;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle="white";
-    ctx.fill();
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-/* CHATBOT */
-function toggleChat(){
-  let box = document.getElementById("chatbox");
-  box.style.display = box.style.display==="none"?"block":"none";
-}
-
-function handleKey(e){
-  if(e.key==="Enter"){
-    let input=document.getElementById("userInput").value.toLowerCase();
-    let response="";
-
-    if(input.includes("price")) response="Bridal ₹3500+, Festival ₹250/hand";
-    else if(input.includes("book")) response="Click Book Now button 😊";
-    else if(input.includes("location")) response="Ara, Bihar";
-    else response="Contact on WhatsApp 😊";
-
-    document.getElementById("chat-body").innerHTML += "<p><b>You:</b> "+input+"</p>";
-    document.getElementById("chat-body").innerHTML += "<p><b>Bot:</b> "+response+"</p>";
-
-    document.getElementById("userInput").value="";
-  }
-}
-
-/* SCROLL ANIMATION */
-const sections=document.querySelectorAll("section");
-
-function showSections(){
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top < window.innerHeight-100){
-      sec.classList.add("show");
-    }
-  });
-}
-
-window.addEventListener("load",showSections);
-window.addEventListener("scroll",showSections);
 
 </script>
 
