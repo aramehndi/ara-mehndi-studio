@@ -6,36 +6,30 @@
 
 <title>ARA Mehndi Studio</title>
 
-<!-- Google Verification -->
 <meta name="google-site-verification" content="H4cj3xKG7XTY1owIFaOR3MZBUtjJAw4uKJRBhttdAhQ" />
 
 <style>
 
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: 'Segoe UI';
   color: white;
-  background: url('bg-mehndi.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: #0f2027;
+  overflow-x: hidden;
 }
 
-/* Overlay */
-body::before {
-  content: "";
+canvas {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
   top: 0;
   left: 0;
   z-index: -1;
 }
 
-/* Navbar */
 .navbar {
   text-align: center;
   padding: 15px;
-  background: black;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
 }
 
 .navbar a {
@@ -44,22 +38,27 @@ body::before {
   text-decoration: none;
 }
 
-/* Header */
 header {
   text-align: center;
   padding: 80px 20px;
 }
 
-/* Button */
 .btn {
-  background: green;
+  background: linear-gradient(45deg, green, lime);
   padding: 12px 25px;
   border-radius: 25px;
   color: white;
   text-decoration: none;
 }
 
-/* Themes */
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -79,12 +78,6 @@ header {
   cursor: pointer;
 }
 
-/* Gallery */
-.gallery {
-  display: none;
-  text-align: center;
-}
-
 .gallery img {
   width: 250px;
   margin: 10px;
@@ -92,37 +85,43 @@ header {
   cursor: pointer;
 }
 
-/* Floating Buttons */
+#popup {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup img {
+  max-width: 90%;
+}
+
 .whatsapp, .instagram {
   position: fixed;
   bottom: 20px;
   padding: 12px;
   border-radius: 50%;
   color: white;
-  text-decoration: none;
 }
 
-.whatsapp {
-  right: 20px;
-  background: green;
-}
+.whatsapp { right: 20px; background: green; }
+.instagram { right: 80px; background: purple; }
 
-.instagram {
-  right: 80px;
-  background: purple;
-}
-
-/* Chatbot */
-#chatbot {
+#chatbox {
   position: fixed;
-  bottom: 80px;
+  bottom: 90px;
   right: 20px;
+  width: 260px;
   background: white;
   color: black;
-  padding: 10px;
-  width: 250px;
-  display: none;
   border-radius: 10px;
+  display: none;
+  padding: 10px;
 }
 
 </style>
@@ -130,99 +129,129 @@ header {
 
 <body>
 
-<!-- NAVBAR -->
+<canvas id="bg"></canvas>
+
 <div class="navbar">
   <a href="#">Home</a>
-  <a href="#gallerySection">Gallery</a>
+  <a href="#price">Price</a>
 </div>
 
-<!-- HEADER -->
 <header>
   <h1>ARA Mehndi Studio</h1>
-  <p>Arabic | Bridal | Mandala Designs</p>
+  <p>Premium Mehndi Designs in Ara</p>
   <br>
-  <a href="https://forms.gle/YOUR_FORM_LINK" class="btn">Book Now</a>
+  <!-- ✅ FORM LINK ADDED -->
+  <a href="https://forms.gle/abcd1234xyz" class="btn" target="_blank">Book Now</a>
 </header>
 
-<!-- THEMES -->
-<section>
-  <h2 style="text-align:center;">Themes</h2>
-
-  <div class="container">
-    <div class="theme" onclick="showGallery('arabic')">Arabic</div>
-    <div class="theme" onclick="showGallery('bridal')">Bridal</div>
-    <div class="theme" onclick="showGallery('mandala')">Mandala</div>
-  </div>
+<section class="card">
+<h2 style="text-align:center;">Design Categories</h2>
+<div class="container">
+<div class="theme" onclick="show('arabic')">Arabic</div>
+<div class="theme" onclick="show('bridal')">Bridal</div>
+<div class="theme" onclick="show('mandala')">Mandala</div>
+</div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallerySection" style="display:none;">
-  <h2 id="title" style="text-align:center;"></h2>
+<section id="gallery" class="card" style="display:none;text-align:center;">
+<h2 id="title"></h2>
 
-  <div id="arabic" class="gallery">
-    <img src="arabic1.png">
-    <img src="arabic2.png">
-    <img src="arabic3.png">
-    <img src="arabic4.png">
-    <img src="arabic5.png">
-  </div>
+<div id="arabic" class="gallery">
+<img src="arabic1.png" onclick="zoom(this)">
+<img src="arabic2.png" onclick="zoom(this)">
+<img src="arabic3.png" onclick="zoom(this)">
+<img src="arabic4.png" onclick="zoom(this)">
+<img src="arabic5.png" onclick="zoom(this)">
+</div>
 
-  <div id="bridal" class="gallery">
-    <img src="bridal1.png">
-    <img src="bridal2.png">
-    <img src="bridal3.png">
-    <img src="bridal4.png">
-    <img src="bridal5.png">
-  </div>
+<div id="bridal" class="gallery">
+<img src="bridal1.png" onclick="zoom(this)">
+<img src="bridal2.png" onclick="zoom(this)">
+<img src="bridal3.png" onclick="zoom(this)">
+<img src="bridal4.png" onclick="zoom(this)">
+<img src="bridal5.png" onclick="zoom(this)">
+</div>
 
-  <div id="mandala" class="gallery">
-    <img src="mandala1.png">
-    <img src="mandala2.png">
-    <img src="mandala3.png">
-    <img src="mandala4.png">
-    <img src="mandala5.png">
-  </div>
+<div id="mandala" class="gallery">
+<img src="mandala1.png" onclick="zoom(this)">
+<img src="mandala2.png" onclick="zoom(this)">
+<img src="mandala3.png" onclick="zoom(this)">
+<img src="mandala4.png" onclick="zoom(this)">
+<img src="mandala5.png" onclick="zoom(this)">
+</div>
 
 </section>
 
-<!-- MAP -->
-<section style="text-align:center; padding:40px;">
-  <h2>Our Location</h2>
-  <iframe src="https://maps.google.com/maps?q=Ara%20Bihar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-  width="90%" height="300"></iframe>
+<section id="price" class="card" style="text-align:center;">
+<h2>Pricing</h2>
+<p>Bridal Mehndi: ₹3000 - ₹8000</p>
+<p>Full Hand: ₹500 - ₹1500</p>
+<p>Arabic: ₹300 - ₹1000</p>
+<p>Mandala: ₹100 - ₹500</p>
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/916200165825" class="whatsapp">💬</a>
+<section class="card">
+<h2>Location</h2>
+<iframe src="https://maps.google.com/maps?q=Ara%20Bihar&t=&z=13&output=embed" width="100%" height="250"></iframe>
+</section>
 
-<!-- INSTAGRAM -->
+<a href="https://wa.me/916200165825?text=I want mehndi booking" class="whatsapp">💬</a>
 <a href="https://instagram.com/ara_mehndi_studio.01" class="instagram">📸</a>
 
-<!-- CHATBOT BUTTON -->
-<button onclick="toggleChat()" style="position:fixed; bottom:140px; right:20px;">Chat</button>
+<button onclick="chatToggle()" style="position:fixed;bottom:150px;right:20px;">Chat</button>
 
-<!-- CHATBOT -->
-<div id="chatbot">
-  <p><b>Hi 👋</b><br>How can I help?</p>
+<div id="chatbox">
+<p><b>Hi 👋</b></p>
+<p>1. Price</p>
+<p>2. Booking</p>
+<p>3. Designs</p>
+</div>
+
+<div id="popup" onclick="this.style.display='none'">
+<img id="popup-img">
 </div>
 
 <script>
 
-function showGallery(type) {
-  document.getElementById("gallerySection").style.display = "block";
-  document.querySelectorAll(".gallery").forEach(g => g.style.display = "none");
-  document.getElementById(type).style.display = "block";
-  document.getElementById("title").innerText = type.toUpperCase() + " Designs";
-
-  document.getElementById("gallerySection").scrollIntoView({
-    behavior: "smooth"
-  });
+function show(type){
+document.getElementById("gallery").style.display="block";
+document.querySelectorAll(".gallery").forEach(g=>g.style.display="none");
+document.getElementById(type).style.display="block";
+document.getElementById("title").innerText=type.toUpperCase();
 }
 
-function toggleChat() {
-  let chat = document.getElementById("chatbot");
-  chat.style.display = chat.style.display === "none" ? "block" : "none";
+function zoom(img){
+document.getElementById("popup").style.display="flex";
+document.getElementById("popup-img").src=img.src;
 }
+
+function chatToggle(){
+let c=document.getElementById("chatbox");
+c.style.display=c.style.display=="none"?"block":"none";
+}
+
+let canvas=document.getElementById("bg");
+let ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<50;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+p.y+=0.5;
+if(p.y>canvas.height) p.y=0;
+ctx.fillStyle="white";
+ctx.fillRect(p.x,p.y,2,2);
+});
+requestAnimationFrame(animate);
+}
+animate();
 
 </script>
 
