@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ARA Mehndi Studio</title>
 
 <style>
-
 body {
   margin: 0;
   font-family: Arial;
@@ -15,26 +13,17 @@ body {
   color: white;
 }
 
-/* NAVBAR */
 .navbar {
   text-align: center;
   padding: 15px;
   background: black;
 }
 
-.navbar a {
-  color: white;
-  margin: 10px;
-  text-decoration: none;
-}
-
-/* HEADER */
 header {
   text-align: center;
   padding: 80px 20px;
 }
 
-/* THEMES */
 .container {
   display: flex;
   justify-content: center;
@@ -52,60 +41,47 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.theme:hover {
-  transform: scale(1.1);
+.gallery {
+  display: none;
+  text-align: center;
 }
 
-/* GALLERY */
 .gallery img {
   width: 250px;
-  border-radius: 10px;
   margin: 10px;
-  transition: 0.3s;
+  border-radius: 10px;
 }
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <a href="#">Home</a>
-  <a href="#">Gallery</a>
-</div>
+<div class="navbar">Home | Gallery</div>
 
-<!-- HEADER -->
 <header>
   <h1>ARA Mehndi Studio</h1>
-  <p>Arabic | Bridal | Mandala Mehndi Designs</p>
+  <p>Arabic | Bridal | Mandala Designs</p>
 </header>
 
 <!-- THEMES -->
 <section>
-  <h2>Themes</h2>
-  <div class="container">
+  <h2 style="text-align:center;">Themes</h2>
 
+  <div class="container">
     <div class="theme" onclick="showGallery('arabic')">Arabic</div>
     <div class="theme" onclick="showGallery('bridal')">Bridal</div>
     <div class="theme" onclick="showGallery('mandala')">Mandala</div>
-
   </div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallerySection" style="display:none;">
-  <h2 id="galleryTitle"></h2>
+<section id="gallerySection" style="display:none; text-align:center;">
+  <h2 id="title"></h2>
 
-  <!-- ARABIC -->
-  <div class="gallery" id="arabic" style="display:none;">
+  <!-- Arabic -->
+  <div id="arabic" class="gallery">
     <img src="arabic1.png">
     <img src="arabic2.png">
     <img src="arabic3.png">
@@ -113,8 +89,8 @@ header {
     <img src="arabic5.png">
   </div>
 
-  <!-- BRIDAL -->
-  <div class="gallery" id="bridal" style="display:none;">
+  <!-- Bridal -->
+  <div id="bridal" class="gallery">
     <img src="bridal1.png">
     <img src="bridal2.png">
     <img src="bridal3.png">
@@ -122,8 +98,8 @@ header {
     <img src="bridal5.png">
   </div>
 
-  <!-- MANDALA -->
-  <div class="gallery" id="mandala" style="display:none;">
+  <!-- Mandala -->
+  <div id="mandala" class="gallery">
     <img src="mandala1.png">
     <img src="mandala2.png">
     <img src="mandala3.png">
@@ -141,18 +117,15 @@ function showGallery(type) {
   document.getElementById("gallerySection").style.display = "block";
 
   // Hide all galleries
-  document.querySelectorAll(".gallery").forEach(g => {
-    g.style.display = "none";
-  });
+  document.querySelectorAll(".gallery").forEach(g => g.style.display = "none");
 
   // Show selected
   document.getElementById(type).style.display = "block";
 
-  // Title change
-  document.getElementById("galleryTitle").innerText =
-    type.charAt(0).toUpperCase() + type.slice(1) + " Designs";
+  // Title set
+  document.getElementById("title").innerText = type.toUpperCase() + " Designs";
 
-  // Smooth scroll
+  // Scroll
   document.getElementById("gallerySection").scrollIntoView({
     behavior: "smooth"
   });
